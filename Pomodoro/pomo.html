@@ -10,17 +10,37 @@
   <main class="container">
     <!-- POMODORO -->
     <section class="card pomodoro">
-      <h1><i class="fas fa-clock"></i> Pomodoro</h1>
+      <h1>
+        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+        </svg>
+        Pomodoro
+      </h1>
+
       <svg class="progress-ring" width="120" height="120">
-        <circle class="bg" cx="60" cy="60" r="54"/>
+        <circle class="bg"  cx="60" cy="60" r="54"/>
         <circle class="progress" id="progressCircle" cx="60" cy="60" r="54"/>
       </svg>
       <div id="timerDisplay" class="timer-display">25:00</div>
+
       <div class="controls">
-        <button id="startBtn"><i class="fas fa-play"></i></button>
-        <button id="pauseBtn"><i class="fas fa-pause"></i></button>
-        <button id="resetBtn"><i class="fas fa-redo"></i></button>
+        <button id="startBtn" title="Iniciar">
+          <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M8 5v14l11-7L8 5z"/>
+          </svg>
+        </button>
+        <button id="pauseBtn" title="Pausar">
+          <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+          </svg>
+        </button>
+        <button id="resetBtn" title="Reiniciar">
+          <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 5V1L7 6l5 5V7a5 5 0 1 1-5 5H7a7 7 0 1 0 7-7z"/>
+          </svg>
+        </button>
       </div>
+
       <blockquote id="taoQuote" class="quote hidden">
         <p id="quoteText"></p>
         <cite>— Tao Te Ching</cite>
@@ -29,10 +49,20 @@
 
     <!-- TAREAS -->
     <section class="card tasks">
-      <h2><i class="fas fa-tasks"></i> Tareas</h2>
+      <h2>
+        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14h-2v-4H7v-2h5V5h2v10z"/>
+        </svg>
+        Tareas
+      </h2>
+
       <form id="taskForm">
         <input id="taskInput" type="text" placeholder="¿Qué necesitas hacer?" required/>
-        <button type="submit"><i class="fas fa-plus"></i></button>
+        <button type="submit" title="Agregar">
+          <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+          </svg>
+        </button>
       </form>
 
       <div class="task-lists">
@@ -49,19 +79,30 @@
 
     <!-- NOTAS -->
     <section class="card notes">
-      <h2><i class="fas fa-sticky-note"></i> Notas del día</h2>
+      <h2>
+        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/>
+        </svg>
+        Notas del día
+      </h2>
       <textarea id="notesArea" placeholder="Escribe tus reflexiones..."></textarea>
       <small>Se guarda automáticamente</small>
     </section>
 
     <a class="link-historico" href="historico.html">
-      <i class="fas fa-history"></i> Ver histórico
+      <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M13 3a9 9 0 0 0-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42A8.954 8.954 0 0 0 13 21a9 9 0 0 0 0-18zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8H12z"/>
+      </svg>
+      Ver histórico
     </a>
   </main>
 
-  <!-- Íconos -->
-  <script src="https://kit.fontawesome.com/4e8f3d5c00.js" crossorigin="anonymous"></script>
-  <!-- Módulos -->
   <script type="module" src="js/app.js"></script>
+<!-- sonido chime -->
+<audio id="chime" preload="auto">
+  <source src="data:audio/wav;base64,UklGRl9vT19XQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YU..." type="audio/wav">
+  <!-- Si prefieres archivo externo descomenta: -->
+  <!-- <source src="assets/chime.wav" type="audio/wav"> -->
+</audio>
 </body>
 </html>

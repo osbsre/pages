@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pomodoro Tao</title>
+  <link rel="stylesheet" href="css/styles.css"/>
+</head>
+<body>
+  <main class="container">
+    <!-- POMODORO -->
+    <section class="card pomodoro">
+      <h1><i class="fas fa-clock"></i> Pomodoro</h1>
+      <svg class="progress-ring" width="120" height="120">
+        <circle class="bg" cx="60" cy="60" r="54"/>
+        <circle class="progress" id="progressCircle" cx="60" cy="60" r="54"/>
+      </svg>
+      <div id="timerDisplay" class="timer-display">25:00</div>
+      <div class="controls">
+        <button id="startBtn"><i class="fas fa-play"></i></button>
+        <button id="pauseBtn"><i class="fas fa-pause"></i></button>
+        <button id="resetBtn"><i class="fas fa-redo"></i></button>
+      </div>
+      <blockquote id="taoQuote" class="quote hidden">
+        <p id="quoteText"></p>
+        <cite>— Tao Te Ching</cite>
+      </blockquote>
+    </section>
+
+    <!-- TAREAS -->
+    <section class="card tasks">
+      <h2><i class="fas fa-tasks"></i> Tareas</h2>
+      <form id="taskForm">
+        <input id="taskInput" type="text" placeholder="¿Qué necesitas hacer?" required/>
+        <button type="submit"><i class="fas fa-plus"></i></button>
+      </form>
+
+      <div class="task-lists">
+        <div>
+          <h3>Pendientes</h3>
+          <ul id="pendingList"></ul>
+        </div>
+        <div>
+          <h3>Completadas</h3>
+          <ul id="completedList"></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- NOTAS -->
+    <section class="card notes">
+      <h2><i class="fas fa-sticky-note"></i> Notas del día</h2>
+      <textarea id="notesArea" placeholder="Escribe tus reflexiones..."></textarea>
+      <small>Se guarda automáticamente</small>
+    </section>
+
+    <a class="link-historico" href="historico.html">
+      <i class="fas fa-history"></i> Ver histórico
+    </a>
+  </main>
+
+  <!-- Íconos -->
+  <script src="https://kit.fontawesome.com/4e8f3d5c00.js" crossorigin="anonymous"></script>
+  <!-- Módulos -->
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

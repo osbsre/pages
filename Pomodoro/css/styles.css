@@ -34,3 +34,16 @@ ul{list-style:none}
 .tab-panel{display:none}
 .tab-panel.active{display:block}
 .empty{color:#888;font-style:italic}
+/* --- tamaño base de iconos --- */
+svg[fill="currentColor"] { width: 20px; height: 20px; }
+/* --- ajustes para botones --- */
+button svg { pointer-events: none; } /* evita que el svg robe el click */
+/* Notas ocupan todo el ancho disponible */
+.notes textarea{
+  width: 100%;
+  box-sizing: border-box;
+}
+/* Botones sin icono extra */
+button svg{
+  pointer-events: none;
+}

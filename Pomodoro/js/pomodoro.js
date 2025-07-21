@@ -19,7 +19,20 @@ const quotes = [
   "El que domina a los demás...",
   "El viaje de mil millas..."
 ];
+// … (al inicio, debajo del resto de importaciones)
+const chime = document.getElementById('chime');
 
+function playChime() {
+  chime.currentTime = 0;
+  chime.play().catch(() => {}); // silencia fallos si el usuario bloquea audio
+}
+
+function notify(msg) {
+  if ('Notification' in window && Notification.permission === 'granted') {
+    new Notification('⏱ Pomodoro Tao', { body: msg });
+  }
+  playChime();
+}
 let timeLeft = 25 * 60;
 let isBreak  = false;
 let interval = null;

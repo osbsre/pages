@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyectos</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #77BEF0, #FFCB61);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #fff;
+            font-size: 3rem;
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 20px;
+            min-height: 400px;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            transition: height 0.3s ease;
+        }
+
+        .project-card:hover::before {
+            height: 100%;
+            opacity: 0.9;
+        }
+
+        .project-card:nth-child(1)::before { background: #77BEF0; }
+        .project-card:nth-child(2)::before { background: #FFCB61; }
+        .project-card:nth-child(3)::before { background: #FF894F; }
+        .project-card:nth-child(4)::before { background: #EA5B6F; }
+        .project-card:nth-child(5)::before { background: rgb(119, 190, 240); }
+        .project-card:nth-child(6)::before { background: rgb(255, 203, 97); }
+        .project-card:nth-child(7)::before { background: rgb(255, 137, 79); }
+        .project-card:nth-child(8)::before { background: rgb(234, 91, 111); }
+        .project-card:nth-child(9)::before { background: #77BEF0; }
+        .project-card:nth-child(10)::before { background: #FFCB61; }
+
+        .project-card a {
+            text-decoration: none;
+            color: #333;
+            font-size: 1.2rem;
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
+            transition: color 0.3s ease;
+        }
+
+        .project-card:hover a {
+            color: white;
+        }
+
+        .add-card {
+            border: 3px dashed #ccc;
+            background: rgba(255, 255, 255, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .add-card:hover {
+            border-color: #77BEF0;
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        .add-card span {
+            font-size: 2rem;
+            color: #77BEF0;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 400px;
+        }
+
+        .modal-content h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+            font-weight: 600;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .form-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
+
+        .btn:hover {
+            opacity: 0.8;
+        }
+
+        .btn-primary {
+            background: #77BEF0;
+            color: white;
+        }
+
+        .btn-secondary {
+            background: #ddd;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Proyectos</h1>
+        <div class="grid-container" id="projectGrid">
+            <div class="project-card">
+                <a href="pomodoro/pomo.html">Pomodoro</a>
+            </div>
+            <div class="project-card add-card" onclick="openModal()">
+                <span>+</span>
+            </div>
+            <div class="project-card add-card" onclick="openModal()">
+                <span>+</span>
+            </div>
+            <div class="project-card add-card" onclick="openModal()">
+                <span>+</span>
+            </div>
+            <div class="project-card add-card" onclick="openModal()">
+                <span>+</span>
+            </div>
+            <div class="project-card add-card" onclick="openModal()">
+                <span>+</span>
+            </div>
+            <div class="project-card add-card" onclick="openModal()">
+                <span>+</span>
+            </div>
+            <div class="project-card add-card" onclick="openModal()">
+                <span>+</span>
+            </div>
+            <div class="project-card add-card" onclick="openModal()">
+                <span>+</span>
+            </div>
+            <div class="project-card add-card" onclick="openModal()">
+                <span>+</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="addModal">
+        <div class="modal-content">
+            <h2>Agregar Nuevo Proyecto</h2>
+            <form id="addProjectForm">
+                <div class="form-group">
+                    <label for="projectName">Nombre del Proyecto:</label>
+                    <input type="text" id="projectName" required>
+                </div>
+                <div class="form-group">
+                    <label for="projectUrl">URL del Proyecto:</label>
+                    <input type="text" id="projectUrl" placeholder="ejemplo/proyecto.html" required>
+                </div>
+                <div class="form-buttons">
+                    <button type="submit" class="btn btn-primary">Agregar</button>
+                    <button type="button" class="btn btn-secondary" onclick="closeModal()">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        let currentCard = null;
+
+        function openModal() {
+            currentCard = event.target.closest('.add-card');
+            document.getElementById('addModal').style.display = 'flex';
+            document.getElementById('projectName').focus();
+        }
+
+        function closeModal() {
+            document.getElementById('addModal').style.display = 'none';
+            document.getElementById('addProjectForm').reset();
+        }
+
+        document.getElementById('addProjectForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('projectName').value;
+            const url = document.getElementById('projectUrl').value;
+            
+            if (currentCard) {
+                currentCard.className = 'project-card';
+                currentCard.innerHTML = `<a href="${url}">${name}</a>`;
+                currentCard.onclick = null;
+            }
+            
+            closeModal();
+        });
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('addModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>
